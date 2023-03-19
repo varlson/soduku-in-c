@@ -1,0 +1,71 @@
+Dtype *Dados[6];
+  Dados[0] = alocadorDeDados();
+  Dados[1] = alocadorDeDados();
+  Dados[2] = alocadorDeDados();
+  Dados[3] = alocadorDeDados();
+  Dados[4] = alocadorDeDados();
+  Dados[5] = alocadorDeDados();
+
+//   geradorDeDadosFake(Dados[0]);
+//   geradorDeDadosFake(Dados[1]);
+//   geradorDeDadosFake(Dados[2]);
+//   geradorDeDadosFake(Dados[3]);
+//   geradorDeDadosFake(Dados[4]);
+//   geradorDeDadosFake(Dados[5]);
+
+    int size = 486;
+  int temp[size];
+
+  FILE *file = fopen("facil.dat", "rb");
+  fread(temp, sizeof(int), size, file);
+  fclose(file);
+
+  int conta = 0;
+  for (int d = 0; d < 6; d++) {
+    for (int i = 0; i < 9; i++) {
+      for (int j = 0; j < 9 ; j++) {
+        Dados[d]->Matrix[i][j] = temp[conta];
+        // printf("%d ", temp[conta]);
+        conta++;
+      }
+    }
+  }
+
+for(int i=0; i<6;i++){
+  tablePrinter(Dados[i]);
+  printf("\n\n");
+
+}
+
+
+
+// for(int i=0; i<6;i++){
+
+//     geradorDeJogo(1, Dados[i]);
+    
+// }
+
+
+//   int index = 0;
+//   for (int i = 0; i < 6; i++) {
+//     for (int k = 0; k < 9; k++) {
+//       for (int j = 0; j < 9; j++) {
+//         temp[index] = Dados[i]->Matrix[k][j];
+//         index++;
+//       }
+//     }
+//   }
+
+//   FILE *file = fopen("facil.dat", "wb");
+//   fwrite(temp, sizeof(int), 486, file);
+//   fclose(file);
+
+  // FILE *file = fopen("teste.dat", "wb");
+  // fwrite(Dados, sizeof(Dtype), 3, file);
+  // fclose(file);
+
+
+
+for(int i=0; i<6;i++){
+  desalocadorDeDados(Dados[i]);
+}
